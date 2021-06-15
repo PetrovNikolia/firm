@@ -10,7 +10,9 @@ import com.example.firm.mapper.RequestMapper;
 import com.example.firm.repository.RequestRepository;
 import com.example.firm.repository.UserRepository;
 import com.example.firm.repository.WorkTypeRepository;
+import com.example.firm.service.MessageService;
 import com.example.firm.service.RequestService;
+import com.example.firm.util.AuthUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,8 @@ public class RequestServiceImpl implements RequestService {
 
     private final RequestMapper requestMapper;
 
+    private final MessageService messageService;
+
     @Override
     public RequestDto getRequest(UUID uuid) {
         return requestMapper.toDto(requestRepository.findById(uuid).orElseThrow(MyNotFoundException::new));
@@ -45,16 +49,18 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public RequestDto add(RequestForm requestForm) {
-        MyUser myUser = userRepository.save(new MyUser(UUID.fromString("410c6088-f00b-4244-9f3b-4ee6a1f1f3be")));
         Request newRequest = Request.builder()
                 .firstName(requestForm.getFirstName())
                 .lastName(requestForm.getLastName())
                 .organization(requestForm.getOrganization())
                 .circulationTime(new SimpleDateFormat(TIME_FORMAT).format(new Date()))
-                .myUser(myUser)
+                .msg(requestForm.getMsg())
+                .myUser(checkUser(AuthUtils.getCurrentUserUuid()))
                 .workType(workTypeRepository.findByName(requestForm.getWorkType()).orElseThrow(MyNotFoundException::new))
                 .build();
-        return requestMapper.toDto(requestRepository.save(newRequest)) ;
+        RequestDto requestDto = requestMapper.toDto(requestRepository.save(newRequest));
+        messageService.sendMsg(requestDto.toString());
+        return requestDto;
     }
 
     @Override

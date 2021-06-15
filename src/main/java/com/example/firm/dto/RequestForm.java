@@ -19,6 +19,7 @@ public class RequestForm {
 
     private String organization;
 
-//    @NotNull
+    private String msg;
+
     private String workType;
 }

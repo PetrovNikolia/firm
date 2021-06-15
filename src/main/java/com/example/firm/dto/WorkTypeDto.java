@@ -13,13 +13,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class WorkTypeDto {
 
-    private UUID uuid;
     private String name;
 
     @Override
     public String toString() {
         return "WorkTypeDto{" +
-                "uuid=" + uuid +
                 ", name='" + name + '\'' +
                 '}';
     }

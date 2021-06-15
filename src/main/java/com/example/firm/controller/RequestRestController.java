@@ -4,9 +4,8 @@ import com.example.firm.dto.RequestDto;
 import com.example.firm.dto.RequestForm;
 import com.example.firm.service.RequestService;
 import lombok.RequiredArgsConstructor;
-//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +18,7 @@ public class RequestRestController {
     private final RequestService requestService;
 
     @PostMapping("/add")
-//    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     public RequestDto addRequest(@RequestBody RequestForm form) throws IOException {
         return requestService.add(form);
     }
@@ -30,13 +29,13 @@ public class RequestRestController {
     }
 
     @GetMapping("/")
-//    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     public RequestDto getRequest(@RequestParam UUID id) throws IOException {
         return requestService.getRequest(id);
     }
 
     @GetMapping("/all")
-//    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     public List<RequestDto> getAllRequest() throws IOException {
         return requestService.getAllRequestUser();
     }

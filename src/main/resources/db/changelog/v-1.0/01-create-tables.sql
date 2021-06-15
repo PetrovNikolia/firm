@@ -58,7 +58,7 @@ create table if not exists request
     references work_type
     );
 
-create table if not exists my_log
+create table if not exists log
 (
     uuid   uuid not null
     constraint my_log_pkey
