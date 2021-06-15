@@ -1,7 +1,5 @@
 package com.example.firm.dto;
 
-import com.example.firm.entity.WorkType;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

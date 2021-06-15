@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @NoArgsConstructor
-public class MyUser extends AbstractClassEntity{
+public class MyUser extends AbstractClassEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -29,7 +29,7 @@ public class MyUser extends AbstractClassEntity{
     @OneToMany
     private List<Request> requests;
 
-    public MyUser(UUID name){
-        this.name=name;
+    public MyUser(UUID name) {
+        this.name = name;
     }
 }

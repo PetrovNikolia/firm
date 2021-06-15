@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Request extends AbstractClassEntity{
+public class Request extends AbstractClassEntity {
 
     @Column
     private String firstName;

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class LogServiceImpl implements LogService {
 
     private final LogRepository logRepository;
+
     @Override
     public void saveLog(Log log) {
         logRepository.save(log);

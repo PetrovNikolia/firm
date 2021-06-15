@@ -1,4 +1,5 @@
 package com.example.firm.exception.custom;
+
 import com.example.firm.exception.ErrorType;
 import lombok.Getter;
 import lombok.Setter;

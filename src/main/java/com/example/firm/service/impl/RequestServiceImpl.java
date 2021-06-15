@@ -4,7 +4,6 @@ import com.example.firm.dto.RequestDto;
 import com.example.firm.dto.RequestForm;
 import com.example.firm.entity.MyUser;
 import com.example.firm.entity.Request;
-import com.example.firm.entity.WorkType;
 import com.example.firm.exception.custom.MyNotFoundException;
 import com.example.firm.mapper.RequestMapper;
 import com.example.firm.repository.RequestRepository;
@@ -69,7 +68,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     private MyUser checkUser(UUID currentUserUuid) {
-        return userRepository.findByName(currentUserUuid).orElseGet(()->userRepository.save(new MyUser(currentUserUuid)));
+        return userRepository.findByName(currentUserUuid).orElseGet(() -> userRepository.save(new MyUser(currentUserUuid)));
 
     }
 }

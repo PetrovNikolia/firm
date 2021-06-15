@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 @NoArgsConstructor
-public class WorkType extends AbstractClassEntity{
+public class WorkType extends AbstractClassEntity {
 
     @Column
     private String name;

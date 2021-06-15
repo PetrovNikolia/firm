@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Worker extends AbstractClassEntity{
+public class Worker extends AbstractClassEntity {
 
     @Column
     private String name;

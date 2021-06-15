@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Log extends AbstractClassEntity{
+public class Log extends AbstractClassEntity {
     @Column
     private String method;
     @Column
